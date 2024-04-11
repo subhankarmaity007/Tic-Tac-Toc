@@ -77,3 +77,7 @@ body {
 .colorX {
   color: #1a1aff;
 }
+
+#playerTurn {
+  color: #ffffff;
+}

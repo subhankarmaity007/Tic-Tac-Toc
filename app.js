@@ -4,9 +4,12 @@ let resetBtn = document.querySelector("#reset-btn");
 let newGameBtn = document.querySelector("#new-btn");
 let msgContainer = document.querySelector(".msg-container");
 let msg = document.querySelector("#msg");
+let playerTurn = document.querySelector("#playerTurn");
 
 let player1 = prompt("Enter First Player Full Name (O):");
 let player2 = prompt("Enter Second Player Full Name (X):");
+
+playerTurn.innerText = `${player1} Your Turn`;
 
 while (player1 === "" || player2 === "") {
   if (player1 === "") player1 = prompt("Enter First Player Full Name (O):");
@@ -51,11 +54,13 @@ boxes.forEach((box) => {
     console.log("box was clicked");
     if (turn) {
       //   box.classList.remove("colorX");
+      playerTurn.innerText = `${player1} Your Turn`;
       box.classList.add("colorO");
       box.innerText = "O";
       turn = false;
     } else {
       //   box.classList.remove("colorO");
+      playerTurn.innerText = `${player2} Your Turn`;
       box.classList.add("colorX");
       box.innerText = "X";
       turn = true;
@@ -82,7 +87,8 @@ const enableBoxes = () => {
 const showWinner = (winner) => {
   if (winner === "O") winner = player1;
   else winner = player2;
-  msg.innerText = `Congratulation, Winner is ${winner}`;
+  msg.innerText = `Congratulation, Winner is ${winner} !`;
+  playerTurn.classList.add("hide");
   msgContainer.classList.remove("hide");
   disableBoxes();
 };
