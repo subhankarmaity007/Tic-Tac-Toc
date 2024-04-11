@@ -36,12 +36,14 @@ const gameBegin = () => {
     if (player1 === "") player1 = prompt("Enter First Player Full Name (O):");
     if (player2 === "") player2 = prompt("Enter Second Player Full Name (X):");
   }
+  playerTurn.innerText = `${player1} Your Turn`;
 };
 
 const resetGame = () => {
   turn = true;
   enableBoxes();
   msgContainer.classList.add("hide");
+  playerTurn.classList.remove("hide");
   for (box of boxes) {
     box.classList.remove("colorO");
     box.classList.remove("colorX");
