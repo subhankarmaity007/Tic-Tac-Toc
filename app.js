@@ -56,16 +56,16 @@ boxes.forEach((box) => {
     console.log("box was clicked");
     if (turn) {
       //   box.classList.remove("colorX");
-      playerTurn.innerText = `${player1} Your Turn`;
       box.classList.add("colorO");
       box.innerText = "O";
       turn = false;
+      playerTurn.innerText = `${player2} Your Turn`;
     } else {
       //   box.classList.remove("colorO");
-      playerTurn.innerText = `${player2} Your Turn`;
       box.classList.add("colorX");
       box.innerText = "X";
       turn = true;
+      playerTurn.innerText = `${player1} Your Turn`;
     }
     box.disabled = true;
 
