@@ -57,6 +57,19 @@ const resetGame = () => {
     box.classList.remove("colorO");
     box.classList.remove("colorX");
   }
+  playerTurn.innerText = `${player1} Your Turn (${signPlayer1})`;
+  // gameBegin();
+};
+
+const startBegin = () => {
+  turn = true;
+  enableBoxes();
+  msgContainer.classList.add("hide");
+  playerTurn.classList.remove("hide");
+  for (box of boxes) {
+    box.classList.remove("colorO");
+    box.classList.remove("colorX");
+  }
   gameBegin();
 };
 
@@ -133,5 +146,5 @@ const checkWinner = () => {
   }
 };
 
-newGameBtn.addEventListener("click", resetGame);
+newGameBtn.addEventListener("click", startBegin);
 resetBtn.addEventListener("click", resetGame);
