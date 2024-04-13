@@ -4,6 +4,8 @@ let resetBtn = document.querySelector("#reset-btn");
 let newGameBtn = document.querySelector("#new-btn");
 let onceAgain = document.querySelector("#onceAgain-btn");
 
+let winnerOnceBtn = document.querySelector(".winnerOnceBtn");
+
 let msgContainer = document.querySelector(".msg-container");
 let msg = document.querySelector("#msg");
 let playerTurn = document.querySelector("#playerTurn");
@@ -52,12 +54,15 @@ const resetGame = () => {
   turn = true;
   enableBoxes();
   msgContainer.classList.add("hide");
+  onceAgain.classList.add("hide");
   playerTurn.classList.remove("hide");
   for (box of boxes) {
     box.classList.remove("colorO");
     box.classList.remove("colorX");
   }
   playerTurn.innerText = `${player1} Your Turn (${signPlayer1})`;
+  resetBtn.innerText = `Reset Game`;
+  // winnerOnceBtn.classList.add("hide");
   // gameBegin();
 };
 
@@ -75,15 +80,11 @@ const startBegin = () => {
 
 // Will add this mathod later
 const onceAgainGame = () => {
-  turn = true;
-  enableBoxes();
-  msgContainer.classList.add("hide");
-  playerTurn.classList.remove("hide");
-  for (box of boxes) {
-    box.classList.remove("colorO");
-    box.classList.remove("colorX");
-  }
-  playerTurn.innerText = `${player1} Your Turn (${signPlayer1})`;
+  resetBtn.innerText = `Once Again`;
+};
+
+const onceAgainAfterWinner = () => {
+  onceAgain.classList.remove("hide");
 };
 
 boxes.forEach((box) => {
@@ -127,7 +128,9 @@ const showWinner = (winner) => {
   msg.innerText = `Congratulation, Winner is ${winner} !`;
   playerTurn.classList.add("hide");
   msgContainer.classList.remove("hide");
+  onceAgainGame();
   disableBoxes();
+  winnerOnceBtn.classList.remove("hide");
 };
 
 const checkWinner = () => {
@@ -148,3 +151,4 @@ const checkWinner = () => {
 
 newGameBtn.addEventListener("click", startBegin);
 resetBtn.addEventListener("click", resetGame);
+onceAgain.addEventListener("click", resetGame);
