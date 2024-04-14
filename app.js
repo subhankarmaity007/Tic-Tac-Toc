@@ -70,11 +70,13 @@ const startBegin = () => {
   turn = true;
   enableBoxes();
   msgContainer.classList.add("hide");
+  onceAgain.classList.add("hide");
   playerTurn.classList.remove("hide");
   for (box of boxes) {
     box.classList.remove("colorO");
     box.classList.remove("colorX");
   }
+  resetBtn.innerText = `Reset Game`;
   gameBegin();
 };
 
